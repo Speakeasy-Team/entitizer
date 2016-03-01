@@ -5,7 +5,8 @@
   "main": "./dist/index.js",
   "scripts": {
     "test": "babel-tape-runner tests/**/*.js | tap-spec",
-    "build": "babel src --presets babel-preset-es2015 --out-dir dist"
+    "build": "babel src --presets babel-preset-es2015 --out-dir dist",
+    "prepublish": "npm run build"
   },
   "author": "Elijah Kim",
   "license": "ISC",
