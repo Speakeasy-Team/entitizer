@@ -1,6 +1,6 @@
 {
   "name": "json-api-entitizer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Package that helps work with json api spec json",
   "main": "./dist/index.js",
   "repository" : {
