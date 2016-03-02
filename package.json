@@ -1,8 +1,12 @@
 {
-  "name": "entitizer",
+  "name": "json-api-entitizer",
   "version": "1.0.0",
   "description": "Package that helps work with json api spec json",
   "main": "./dist/index.js",
+  "repository" : {
+    "type": "git",
+    "url": "https://github.com/Speakeasy-Team/json-api-entitizer"
+  },
   "scripts": {
     "test": "babel-tape-runner tests/**/*.js | tap-spec",
     "build": "babel src --presets babel-preset-es2015 --out-dir dist",
