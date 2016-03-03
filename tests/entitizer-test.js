@@ -1,7 +1,6 @@
 import test from "tape";
 import testJson from "./helpers/testJson.json";
 import { entitize } from "../src/index";
-import map from "lodash/map";
 import keys from "lodash/keys";
 
 test("entitizer extracts json", (t) => {
@@ -20,7 +19,7 @@ test("entitizer extracts json", (t) => {
           "relationships": {
             author: {
               id: "42",
-              type: "people"
+              type: "people",
             },
           },
         },
@@ -31,7 +30,7 @@ test("entitizer extracts json", (t) => {
           "name": "John",
           "age": 80,
           "gender": "male",
-          "relationships": {}
+          "relationships": {},
         },
       },
       books: {
@@ -53,7 +52,7 @@ test("entitizer extracts json", (t) => {
         },
       },
     },
-  }
+  };
 
   t.deepEqual(actual, expected);
 });
@@ -67,18 +66,18 @@ test("entitizer extracts the type", (t) => {
 });
 
 test("entitizer sets the entities id to the key", (t) => {
-  t.plan(1)
+  t.plan(1);
   const response = entitize(testJson);
   const bookIds = keys(response.entities.books);
-  const expectedBookIds = ['3', '4'];
+  const expectedBookIds = ["3", "4"];
 
   t.deepEqual(bookIds, expectedBookIds);
 });
 
 test("entitizer sets the attributes and relationships", (t) => {
-  t.plan(1)
+  t.plan(1);
   const response = entitize(testJson);
-  const article = response.entities.articles[1]
+  const article = response.entities.articles[1];
   const expectedArticle = {
     "id": "1",
     "title": "JSON API paints my bikeshed!",
@@ -88,24 +87,24 @@ test("entitizer sets the attributes and relationships", (t) => {
     "relationships": {
       "author": {
         id: "42",
-        type: "people"
-      }
-    }
-  }
+        type: "people",
+      },
+    },
+  };
 
   t.deepEqual(article, expectedArticle);
 });
 
 test("entitizer sets entities for relationships", (t) => {
-  t.plan(1)
+  t.plan(1);
   const response = entitize(testJson);
 
   t.ok(response.entities.people);
 });
 
 test("entitizer sets included relationships", (t) => {
-  t.plan(1)
+  t.plan(1);
   const response = entitize(testJson);
 
-  t.ok(response.entities.people[42])
+  t.ok(response.entities.people[42]);
 });
