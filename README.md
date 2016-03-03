@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/Speakeasy-Team/json-api-entitizer.svg?style=svg)](https://circleci.com/gh/Speakeasy-Team/json-api-entitizer)
+
 #JSON API Entitizer
 
 This library was created because consuming a [JSON API](http://jsonapi.org/)
@@ -11,7 +13,9 @@ To install using npm run:
 
 `$ npm install json-api-entitizer --save`
 
-##Entitizing:
+##api
+
+`entitize(json)`
 
 the `entitize(json)` function will transform this json:
 ```
@@ -113,3 +117,15 @@ entities: {
   },
 },
 ```
+
+`findById(store, resourceType, id)`
+
+> Returns the object or an empty object
+
+> Example: `const book = findById(store, "books", 1);`
+
+`findAssociated(store, resourceType, id, association)`
+
+> Returns an array for a has many relationship or the object for a has one
+
+> Example: `const authors = findAssociated(store, "books", 1, "authors");`
