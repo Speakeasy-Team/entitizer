@@ -3,22 +3,22 @@ import merge from "lodash/merge";
 import has from "lodash/has";
 
 export function entitize(json) {
-  let entities = {}
+  let entities = {};
   entities = reduceData(entities, json.data);
   entities = reduceData(entities, json.included);
   return { entities };
 }
 
 function reduceData(entities, data) {
-  return merge({}, entities, reduce(data, (result, item, key) => {
+  return merge({}, entities, reduce(data, (result, item) => {
     const { id, type, relationships, attributes } = item;
 
     result = createMisingType(result, type);
     result = setRecord(result, type, id, attributes);
     result = setRelationships(result, type, id, relationships);
 
-    return result
-  }, {}))
+    return result;
+  }, {}));
 }
 
 function createMisingType(entities, type) {

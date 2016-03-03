@@ -8,16 +8,22 @@
     "url": "https://github.com/Speakeasy-Team/json-api-entitizer"
   },
   "scripts": {
-    "test": "babel-tape-runner tests/**/*.js | tap-spec",
+    "test": "babel-tape-runner tests/**/*.js | tap-spec && npm run lint",
     "build": "babel src --presets babel-preset-es2015 --out-dir dist",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "lint": "eslint src"
   },
   "author": "Elijah Kim",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.6.0",
+    "babel-eslint": "^6.0.0-beta.1",
     "babel-preset-es2015": "^6.6.0",
     "babel-tape-runner": "^2.0.1",
+    "eslint": "^2.2.0",
+    "eslint-config-standard": "^5.1.0",
+    "eslint-plugin-promise": "^1.1.0",
+    "eslint-plugin-standard": "^1.3.2",
     "tap-spec": "^4.1.1"
   },
   "dependencies": {
